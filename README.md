@@ -25,7 +25,8 @@ To run truffle tests:
 * [Ganache Local Blockchain](http://truffleframework.com/ganache/)
 * [Solidity Language Reference](http://solidity.readthedocs.io/en/v0.4.24/)
 * [Ethereum Blockchain Explorer](https://etherscan.io/)
-* [Web3Js Reference](https://github.com/ethereum/wiki/wiki/JavaScript-API)* [BIP39 Mnemonic Generator](https://iancoleman.io/bip39/)
+* [Web3Js Reference](https://github.com/ethereum/wiki/wiki/JavaScript-API)
+* [BIP39 Mnemonic Generator](https://iancoleman.io/bip39/)
 * [Remix Solidity IDE](https://remix.ethereum.org/)
 
 ## Versions
@@ -44,3 +45,4 @@ This code was created with the following versions of tools:
 * Ensure you have at least the versions of the tools specified above
 * Delete node_modules folder and run "npm install" to refresh dependencies
 * If you get compiler errors, change the "pragma" line in all .sol files to match your version
+* If you are on Microsoft Windows and get an error message from the operating system that relates to a missing truffle.js file when you type _npm test_, please rename the truffle.js file to truffle-config.js
