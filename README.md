@@ -25,7 +25,8 @@ To run truffle tests:
 * [Ganache Local Blockchain](http://truffleframework.com/ganache/)
 * [Solidity Language Reference](http://solidity.readthedocs.io/en/v0.4.24/)
 * [Ethereum Blockchain Explorer](https://etherscan.io/)
-* [Web3Js Reference](https://github.com/ethereum/wiki/wiki/JavaScript-API)* [BIP39 Mnemonic Generator](https://iancoleman.io/bip39/)
+* [Web3Js Reference](https://github.com/ethereum/wiki/wiki/JavaScript-API)
+* [BIP39 Mnemonic Generator](https://iancoleman.io/bip39/)
 * [Remix Solidity IDE](https://remix.ethereum.org/)
 
 ## Versions
