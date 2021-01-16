@@ -45,3 +45,4 @@ This code was created with the following versions of tools:
 * Ensure you have at least the versions of the tools specified above
 * Delete node_modules folder and run "npm install" to refresh dependencies
 * If you get compiler errors, change the "pragma" line in all .sol files to match your version
+* If you are on Microsoft Windows and get an error message from the operating system that relates to a missing truffle.js file when you type _npm test_, please rename the truffle.js file to truffle-config.js
