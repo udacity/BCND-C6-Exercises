@@ -12,9 +12,9 @@ contract ExerciseC6A {
         bool isAdmin;
     }
 
-    address public contractOwner;                  // Account used to deploy contract
+    address private contractOwner;                  // Account used to deploy contract
     mapping(address => UserProfile) userProfiles;   // Mapping for storing user profiles
-    bool private operational;
+    bool public operational;
     uint constant M = 3;
 
     address[] multicalls = new address[](0);
