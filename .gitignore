@@ -1,0 +1,4 @@
+/node_modules/
+/package-lock.json
+/build/contracts/ExerciseC6A.json
+/build/contracts/Migrations.json

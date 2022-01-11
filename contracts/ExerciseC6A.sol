@@ -1,4 +1,4 @@
-pragma solidity ^0.4.25;
+pragma solidity >=0.4.24;
 
 contract ExerciseC6A {
 
@@ -6,16 +6,28 @@ contract ExerciseC6A {
     /*                                       DATA VARIABLES                                     */
     /********************************************************************************************/
 
-
+    uint constant M = 2;
     struct UserProfile {
         bool isRegistered;
         bool isAdmin;
     }
 
-    address private contractOwner;                  // Account used to deploy contract
-    mapping(address => UserProfile) userProfiles;   // Mapping for storing user profiles
-
-
+    /**
+    * @dev Account used to deploy the contract.
+    */
+    address private contractOwner;
+    /**
+    * @dev Mapping of addresses to "UserProfile" structs.
+    */
+    mapping(address => UserProfile) userProfiles;
+    /**
+    * @dev Determines if a contract is currently operational.
+    */
+    bool private operational = true;
+    /**
+    * @dev
+    */
+    address[] multiCalls = new address[](0);
 
     /********************************************************************************************/
     /*                                       EVENT DEFINITIONS                                  */
@@ -51,6 +63,15 @@ contract ExerciseC6A {
         _;
     }
 
+    /**
+    * @dev Modifier that requires the contract to be "operational".
+    */
+    modifier requireOperational()
+    {
+        require(operational, "Contract is not currently operational.");
+        _;
+    }
+
     /********************************************************************************************/
     /*                                       UTILITY FUNCTIONS                                  */
     /********************************************************************************************/
@@ -72,6 +93,15 @@ contract ExerciseC6A {
         return userProfiles[account].isRegistered;
     }
 
+    /**
+    * @dev Check if the contract is operational.
+    * @return A bool that indicates if the contract is operational.
+    */
+    function isOperational() external view returns(bool)
+    {
+        return operational;
+    }
+
     /********************************************************************************************/
     /*                                     SMART CONTRACT FUNCTIONS                             */
     /********************************************************************************************/
@@ -83,6 +113,7 @@ contract ExerciseC6A {
                                 )
                                 external
                                 requireContractOwner
+                                requireOperational
     {
         require(!userProfiles[account].isRegistered, "User is already registered.");
 
@@ -90,6 +121,30 @@ contract ExerciseC6A {
                                                 isRegistered: true,
                                                 isAdmin: isAdmin
                                             });
+    }
+
+    function setOperatingStatus
+                            (
+                                bool mode
+                            )
+                            external
+    {
+        require(mode != operational, "New mode must be different from existing mode.");
+        require(userProfiles[msg.sender].isAdmin, "Caller is not an admin.");
+
+        bool isDuplicate = false;
+        for(uint c=0; c<multiCalls.length;c++) {
+            if(multiCalls[c] == msg.sender){
+                isDuplicate = true;
+                break;
+            }
+        }
+        require(!isDuplicate, "Caller has already called this function.");
+        multiCalls.push(msg.sender);
+        if(multiCalls.length >= M){
+            operational = mode;
+            multiCalls = new address[](0);
+        }
     }
 }
 
