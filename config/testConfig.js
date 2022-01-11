@@ -1,5 +1,6 @@
 
 var ExerciseC6A = artifacts.require("ExerciseC6A");
+var ExerciseC6B = artifacts.require("ExerciseC6B");
 
 var Config = async function(accounts) {
     
@@ -20,11 +21,13 @@ var Config = async function(accounts) {
 
     let owner = accounts[0];
     let exerciseC6A = await ExerciseC6A.new();
+    let exerciseC6B = await ExerciseC6B.new();
     
     return {
         owner: owner,
         testAddresses: testAddresses,
-        exerciseC6A: exerciseC6A
+        exerciseC6A: exerciseC6A,
+        exerciseC6B: exerciseC6B,
     }
 }
 

@@ -123,6 +123,7 @@ contract ExerciseC6A {
                                             });
     }
 
+
     function setOperatingStatus
                             (
                                 bool mode
